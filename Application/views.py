@@ -2,5 +2,7 @@
 from django.shortcuts import render
 from .models import *
 
-def Application(request):
-    return render(request, 'index.html')
+def template(request):
+    return render(request, 'template.html')
+def dashboard(request):
+    return render(request, 'src/dashboard.html')

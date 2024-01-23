@@ -6,7 +6,8 @@ from django.db import models
 #Tables Utilisateurs(Facultatifs)
 class Utilisateur(models.Model):
     nom = models.CharField(max_length=50)
-    nomComplet = models.CharField(max_length = 150)
+    prenom = models.CharField(max_length = 150)
+    poste = models.CharField(max_length = 100)
     email = models.EmailField(max_length=100)
     motPass = models.CharField(max_length = 50)
 
