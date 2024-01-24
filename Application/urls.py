@@ -11,5 +11,4 @@ urlpatterns = [
     path('inscritformation', inscritformation, name='inscritformation'),
     path('conge', conge, name='conge'), 
     path('sanction', sanction, name='sanction'),
-    path('my-chart/', my_chart_view, name='my_chart'),
 ]

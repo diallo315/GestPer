@@ -63,7 +63,7 @@
           <h3>34</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Fonctionnaires Administratifs</h4>
+        <h4>Administratifs </h4>
       </div>
     </div>
 
@@ -80,10 +80,31 @@
   </div>
   <hr>
 
-  <div>
-    <h2>Graphique Circulaire</h2>
-    <img src="data:image/png;base64,{{ image }}" alt="My Pie Chart">
-</div>
+  <div class="w3-container">
+    <h2 style="text-align: center; font-weight: bold;"> Graphique par Sexe</h2>
+    <div class="w3-row" style="display: flex; justify-content:space-around;">
+      <div class="w3-third w3-border" style="width: 45%; margin-bottom: 5%;">
+        <h2 style="text-align: center;"> Circulaire</h2>
+        <img src="data:image/png;base64,{{ graphique_circulaire_sexe }}" alt="Graphique Circulaire" width="100%" height="auto">
+      </div>
+      <div class="w3-third w3-border " style="width: 45%; margin-bottom: 5%;">
+        <h2 style="text-align: center;"> Barre</h2>
+        <img src="data:image/png;base64,{{ graphique_barres_sexe }}" alt="Graphique Barre" width="100%">
+      </div>
+    </div>
+    <hr>
+    <h2 style="text-align: center; font-weight: bold;"> Graphique par Hiérarchie</h2>
+    <div class="w3-row" style="display: flex; justify-content:space-around;">
+      <div class="w3-third w3-border" style="width: 45%; margin-bottom: 5%;">
+        <h2 style="text-align: center;"> Circulaire</h2>
+        <img src="data:image/png;base64,{{ graphique_circulaire_grade }}" alt="Graphique Circulaire" width="100%" height="auto">
+      </div>
+      <div class="w3-third w3-border " style="width: 45%; margin-bottom: 5%;">
+        <h2 style="text-align: center;"> Barre</h2>
+        <img src="data:image/png;base64,{{ graphique_barres_grade }}" alt="Graphique Barre" width="100%">
+      </div>
+    </div>
+  </div>
 
 {% endblock content %}
-    
+  
