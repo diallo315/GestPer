@@ -15,11 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 # GestPer/urls.py
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import *
-from Application.views import *
-from GestPer import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),

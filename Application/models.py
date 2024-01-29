@@ -1,28 +1,31 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 
 #Tables Utilisateurs(Facultatifs)
-class Utilisateur(models.Model):
-    nom = models.CharField(max_length=50)
-    prenom = models.CharField(max_length = 150)
+class Utilisateur(AbstractUser):
+    # nom = models.CharField(max_length=50)
+    # prenom = models.CharField(max_length = 150)
     poste = models.CharField(max_length = 100)
-    email = models.EmailField(max_length=100)
-    motPass = models.CharField(max_length = 50)
+    # email = models.EmailField(max_length=100)
+    # motPass = models.CharField(max_length = 50)
 
 class Personnel(models.Model):
     nom = models.CharField(max_length=50)
-    utilisateur = models.ForeignKey(Utilisateur, on_delete = models.CASCADE)
+    prenom = models.CharField(max_length=50)
     matricule = models.CharField(max_length=50)
     sexe = models.CharField(max_length = 50)
     hierarchie = models.CharField(max_length = 50)
     fonction = models.CharField(max_length=80)
     grade = models.CharField(max_length=50)
-    diplome = models.CharField(max_length=70)
+    diplome = models.FileField(upload_to='diplome_personnel', max_length=100)
     telephone = models.CharField(max_length= 30)
-    adresse = models.CharField(max_length=80)
+    email = models.EmailField(max_length=80)
     dateNaissance = models.DateField()
+    lieuNaissace = models.CharField(max_length= 50)
+    photo = models.ImageField(upload_to='Image_Profil_Personnel', max_length=100)
     salaire = models.FloatField()
     service = models.CharField(max_length=80)
     observation = models.TextField()

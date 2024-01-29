@@ -1,2 +1,188 @@
-/*=================PAGE D'ACCUEIL=============================================================*/
+/*=================PAGE DU PERSONNEL=============================================================*/
+/*----------------------------------Tableau du personnel ----------------------------------*/
+.tablePersonnel {
+    border-collapse: collapse;
+    width: 80%;
+    margin-bottom: 20px;
+}
 
+.tablePersonnel th, .tablePersonnel td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.tablePersonnel th {
+    background-color: #f2f2f2;
+}
+
+.inputPersonne {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.buttonSearchPersonnel {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.selectFilter {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+/*----------------------------------Formulaire de modal d'ajout d'un Personnel ------------------------------*/
+/* Full-width input fields and select */
+
+
+.ajoutPersonnel input[type=text],  .ajoutPersonnel input[type=password],
+.ajoutPersonnel input[type=date], .ajoutPersonnel input[type=email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for sign in buttons */
+  .loginbtn {
+    width: auto;
+    padding: 10px 18px;
+    color:#04AA6D;
+    font-weight: bold;
+    background-color: none;
+    border: 2px solid #04AA6D;
+  }
+  
+  .loginbtn:hover, .cancelbtn:focus{
+    opacity: 0.8;
+    color: white;
+    background-color: #04AA6D;
+  }
+  
+  /* Set a style for add client in button */
+  
+  .addpersonnel{
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 5px 0px;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
+  
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    color:red;
+    font-weight: bold;
+    background-color: white;
+    border: 2px solid red;
+  }
+  
+  .cancelbtn:hover, .cancelbtn:focus{
+    color: white;
+    background-color: red;
+  }
+  
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+  
+  .container {
+    padding:0px 20px 16px 16px;
+  }
+  .containerS {
+    padding: 20px 16px;
+    background-color:#f1f1f1; 
+    display: flex; 
+    justify-content:space-between;
+  }
+  
+  #idPersonnel span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 0% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+  }
+  
+  @keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 500px) {
+  #idPersonnel  span.psw {
+       display: block;
+       float: none;
+    }
+    
+    .cancelbtn {
+       width: 100%;
+    }
+    
+    .modal-content {
+    background-color: red;
+    margin: 2% auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 100%; /* Could be more or less, depending on screen size */
+  }
+  }
+  
+
+/*-----------------------------------------D'autres css de la page personnelle -------------------------*/

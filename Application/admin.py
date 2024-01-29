@@ -1,16 +1,16 @@
 from django.contrib import admin
 from .models import *
 # Register your models here.
-
+from django.contrib.auth.admin import UserAdmin
 @admin.register(Utilisateur)
-class UtilisateurAdmin(admin.ModelAdmin):
-    list_display = ['nom','prenom','poste', 'email', 'motPass']
+class UtilisateurAdmin(UserAdmin):
+     list_display = ('username', 'email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser', 'poste')
     
 @admin.register(Personnel)
 class PersonnelAdmin(admin.ModelAdmin):
-    list_display = ['utilisateur', 'matricule', 'sexe', 
+    list_display = ['nom','prenom', 'matricule', 'sexe', 
                     'hierarchie', 'fonction', 'grade', 'diplome',
-                    'telephone', 'adresse', 'dateNaissance', 
+                    'telephone', 'email', 'dateNaissance', 
                     'salaire', 'observation']
 
 @admin.register(Document)
