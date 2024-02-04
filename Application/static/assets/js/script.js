@@ -56,3 +56,12 @@ function filterTable() {
       }
   }
 }
+
+//Formulaire d'ajout d'un personnel 
+//Modal de deconnexion
+function OpenModal(){
+  document.getElementById('idDeconnexion').style.display='block'
+}
+function CloseModal(){
+  document.getElementById('idDeconnexion').style.display = 'none'
+}

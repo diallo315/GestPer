@@ -7,6 +7,54 @@
 
 
 {% block content %}
-    
+    <div class="w3-container">
+        <h2 style="font-weight: bold; text-align:center; margin-top:20px">La Liste des Personnels en Congés </h2>
+        <div class="w3-third w3-right" style="display: flex;
+        flex-direction:column">  
+        <div> 
+            {% csrf_token %}
+            <a href="{% url 'ajoutconge' %}"><button class="buttonSearchPersonnel w3-right addpersonnel" style="width:auto; cursor:pointer;">AJOUTER</button></a><br>
+        </div>
+            <form style="display: flex;"> 
+            {% csrf_token %}
+            <input class="inputPersonne" type="text" id="searchInput" placeholder="Rechercher...">
+            <select style="margin-left: 5px;" class="selectFilter" id="filterMatriculeSexe">
+                <option value="all">Tous</option>
+                <option value="matricule">Matricule</option>
+                <option value="typedocument">Type Congés</option>
+            </select>
+            <button style="margin-left: 5px;" class="buttonSearchPersonnel" onclick="filterTable()">Rechercher</button>
+        
+        </form>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <table class="tablePersonnel" id="myTable" style="margin: auto;">
+                <thead>
+                    <tr>
+                        <th>Matricule</th>
+                        <th>Nom et Prénom</th>
+                        <th>Type de Congés</th>
+                        <th>Date Début</th>
+                        <th>Date Fin</th>
+                        <th>Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for conge in conges %}
+                        <tr>
+                            <td> {{conge.Personnel.matricule}} </td>
+                            <td> {{conge.Personnel.nom}} {{conge.Personnel.prenom}} </td>
+                            <td>{{conge.typeconges}}</td>
+                            <td>{{conge.dateDeb}}</td>
+                            <td> {{conge.dateFin}} </td>
+                            <td style="text-align:center;"><a href="#" style="padding-right:5px; color:blue" class="fa fa-eye fa-fw">Terminé...</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>    
+
 {% endblock content %}
     

@@ -10,9 +10,9 @@
         flex-direction:column">  
            <div> 
             {% csrf_token %}
-              <button class="buttonSearchPersonnel w3-right addpersonnel" onclick="document.getElementById('idPersonnel').style.display='block'" style="width:auto;">AJOUTER</button><br>
+              <a href="{% url 'ajoutpersonnel' %}"><button class="buttonSearchPersonnel w3-right addpersonnel" style="width:auto; cursor:pointer;">AJOUTER</button></a><br>
            </div>
-            <div style="display: flex;"> 
+            <form style="display: flex;"> 
               <input class="inputPersonne" type="text" id="searchInput" placeholder="Rechercher...">
               <select style="margin-left: 5px;" class="selectFilter" id="filterMatriculeSexe">
                   <option value="all">Tous</option>
@@ -21,120 +21,39 @@
               </select>
               <button style="margin-left: 5px;" class="buttonSearchPersonnel" onclick="filterTable()">Rechercher</button>
           
-            </div>
+            </form>
         </div>
 
-        <table class="tablePersonnel" id="myTable" style="margin: auto;">
-            <thead>
-                <tr>
-                    <th>Matricule</th>
-                    <th>Nom et Prénom</th>
-                    <th>Sexe</th>
-                    <th>Hiérarchie</th>
-                    <th>Fonction</th>
-                    <th>Email </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for personnel in personnels %}
+        <div style="margin-bottom: 20px;">
+            <table class="tablePersonnel" id="myTable" style="margin: auto;">
+                <thead>
                     <tr>
-                        <td> {{personnel.matricule}} </td>
-                        <td> {{personnel.nom}} {{personnel.prenom}} </td>
-                        <td>{{personnel.sexe}}</td>
-                        <td>{{personnel.hierarchie}}</td>
-                        <td> {{personnel.fonction}} </td>
-                        <td>{{personnel.email}}</td>
-                        <td><button>Action</button></td>
+                        <th>Matricule</th>
+                        <th>Nom et Prénom</th>
+                        <th>Sexe</th>
+                        <th>Hiérarchie</th>
+                        <th>Fonction</th>
+                        <th>Email </th>
+                        <th>Service </th>
+                        <th>Action</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <div id="idPersonnel" class="modal">
-          <form class="modal-content animate" action="" method="POST">
-            {% csrf_token %}
-              <div style="height: 20px; width:100%; background-color:#f77F00"></div>
-              <div class="imgcontainer">
-                <span onclick="document.getElementById('idPersonnel').style.display='none'" class="close" title="Fermer">&times;</span> <br>
-              </div>
-          
-              <div class="container ajoutPersonnel">
-                <label for="image"><b>Ajoutez l'Image du Profil</b></label>
-                <input type="file"  name="matricule" required>
-               
-                <label for="matricule"><b>Matricule</b></label>
-                <input type="text" placeholder="Entrez le matricule" name="matricule" required>
-               
-                <label for="nom"><b>Nom</b></label>
-                <input type="text" placeholder="Entrez le nom" name="nom" required>
-          
-                <label for="prenom"><b>Prénom </b></label>
-                <input type="text" placeholder="Entrez le prénom" name="prenom" required>
-        
-                <label for="sexe"><b>Sexe </b></label><br>
-                <select name="sexe" class="selectFilter" >
-                  <option value="masculin">M</option>
-                  <option value="feminin">F</option>            
-                </select><br>
-
-                <label for="dateN"><b>Date de Naissance </b></label>
-                <input type="date" placeholder="Entrez la date de Naissance" name="dateN" required>
-
-                <label for="lieuN"><b>Lieu de Naissance </b></label>
-                <input type="text" placeholder="Entrez la grade Académique " name="lieuN" required>
-                
-                <label for="email"><b>E-mail </b></label>
-                <input type="email" placeholder="Entrez le Gmail " name="email" required>
-                
-                <label for="tel"><b>Téléphone </b></label>
-                <input type="text" placeholder="Entrez le numéro de Telephone " name="tel" required>
-
-                <label for="hierarchie" ><b>Hiérarchie </b></label><br>
-                <select name="hierarchie" class="selectFilter" >
-                  <option value="a1">A1</option>
-                  <option value="a2">A2</option>            
-                  <option value="a3">A3</option>
-                  <option value="b1">B1</option>            
-                  <option value="b2">B2</option>            
-                  <option value="c">C</option>
-                  <option value="cp">CP</option>            
-                </select><br>
-    
-                <label for="fonction"><b>Fonction </b></label>
-                <input type="text" placeholder="Entrez la fonction" name="fonction" required>
-
-                <label for="grade"><b>Grade Académique </b></label>
-                <input type="text" placeholder="Entrez la grade Académique " name="grade" required>
-
-                <label for="diplome"><b>Diplôme </b></label>
-                <input type="file" name="diplome" required>
-          
-                <label for="salaire"><b>Salaire </b></label>
-                <input type="text" placeholder="Entrez le salaire" name="salaire" required>
-          
-                <label for="service"><b>Sevice </b></label>
-                <input type="text" placeholder="Entrez le service" name="service" required>
-          
-                <label for="Observation"><b>Observation </b></label>
-                <input type="text" placeholder="Entrez l'observation" name="observation" required>
-          
-                <label>
-                  <input type="checkbox" name="remember"> Êtes-vous sûr d'avoir renseigner des bonnes informations
-                </label>
-              </div>
-          
-              <div class="containerS">
-                <div>
-                  <button type="submit" class="loginbtn">AJOUTER</button>
-                </div>
-                <div>
-                  <button type="button" onclick="document.getElementById('idPersonnel').style.display='none'" class="cancelbtn">ANNULER</button>
-                </div>
-              </div>
-            </form>
-          </div>
-          
-    </div>
+                </thead>
+                <tbody>
+                    {% for personnel in personnels %}
+                        <tr>
+                            <td> {{personnel.matricule}} </td>
+                            <td> {{personnel.nom}} {{personnel.prenom}} </td>
+                            <td>{{personnel.sexe}}</td>
+                            <td>{{personnel.hierarchie}}</td>
+                            <td> {{personnel.fonction}} </td>
+                            <td>{{personnel.email}}</td>
+                            <td>{{personnel.service}}</td>
+                            <td style="text-align:center;"><a href="#" style=" color:blue" class="fa fa-eye fa-fw"></a><a href="#" style="" class="fa fa-pencil fa-fw"></a><a style="" href="#" class="fa fa-trash fa-fw"></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>c
 {% endblock %}
     

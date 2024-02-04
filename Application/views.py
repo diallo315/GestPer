@@ -171,12 +171,17 @@ def loginsignup(request):
     return render(request, 'loginSignup.html', context)
 #==================================PERSONNEL ============================================#
 def personnel(request):
+    personnel = Personnel.objects.all()
+    context = {
+        'personnels' : personnel, 
+    }
+    return render(request, 'src/personnel.html', context)
+
+#===============================AJOUT D'UN FONCTIONNAIRE===================================================#
+def ajoutpersonnel(request):
     personnel_existant = ""
     personnel_enregistrer = ""
-    
-    personnel = Personnel.objects.all()
     if request.method == 'POST':
-        print("je suis dedans !")
         nom = request.POST.get("nom")
         prenom = request.POST.get("prenom")
         matricule = request.POST.get("matricule")
@@ -188,14 +193,15 @@ def personnel(request):
         email = request.POST.get("email")
         dateNaissance = request.POST.get("dateN")
         lieuNaissance = request.POST.get("lieuN")
-        photo = request = request.POST.get("photo")
+        photo = request.POST.get("photo")
         salaire = request.POST.get("salaire")
         service = request.POST.get("service")
         observation = request.POST.get("observation")
         verifie_matricule = Personnel.objects.filter(matricule = matricule)
-        if verifie_matricule:
+        if verifie_matricule.exists():
             personnel_existant = "Le personnel existe déjà !"
-            return render(request, 'src/personnel.html', {'personnel_existe': personnel_existant})
+            print(personnel_existant)
+            # return render(request, 'src/personnel.html', {'personnel_existe': personnel_existant})
         else:
             personnel = Personnel(
                 nom = nom,
@@ -217,12 +223,14 @@ def personnel(request):
             )
             personnel.save()
             personnel_enregistrer = "Personnel enregistrer avec succès !"
-            return redirect('personnel')
+            print(personnel_enregistrer)
+            # return render(request, 'src/personnel.html', {'personnel_enregistrer': personnel_enregistrer})
     context = {
         'personnel_enregistrer' : personnel_enregistrer,
-        'personnels' : personnel, 
+        'personnel_existant' : personnel_existant,
     }
-    return render(request, 'src/personnel.html', context)
+        
+    return render(request, 'src/ajoutpersonnel.html', context)
 
 #===============================DOCUMENT ===================================================#
 def doucument(request):
@@ -232,9 +240,21 @@ def doucument(request):
 def conge(request):
     return render(request, 'src/conge.html')
 
-#===================================SANCTION ==================================================#
-def sanction(request):
-    return render(request, 'src/sanction.html')
+#==========================================AJOUT D'UN CONGE ======================================#
+def ajoutconge(request):
+    conges_existant = ""
+    conges_success = ""
+    personnel = Personnel.objects.all()
+    if request.method == 'POST':
+       matricule = request.POST.get("matricule")
+       typeconge = request.POST.get("typeconge")
+       dateD = request.POST.get("dateD")
+       dateF = request.POST.get("dateF")
+       #verfie_matricule = Conge.objects.filter(personnel.matricule = matricule)
+    #    conge = Conge(
+    #        personnel.matricule = 
+    #    )
+    return render(request, 'src/ajoutconge.html')
 
 #===================================INSCRIPTION A UNE FORMATION ===================================#
 def inscritformation(request):
@@ -246,7 +266,22 @@ def historique(request):
 
 #=========================================FORMATIONS EN COURS =========================================#
 def formationcours(request):
-    return render(request, 'src/formationcours.html')
+    formation = Formation.objects.all()
+    context = {
+        'formations':formation,
+    }
+    return render(request, 'src/formationcours.html', context)
 
+#=========================================FORMATIONS EN COURS =========================================#
+def templates(request):
+    messageDeconnexion = ""
+    print("je suis la")
+    if request.method == 'POST':
+        deconnexion = request.POST.get('is_deconnect')
+        print("JE SUIS DEDANS ET VOICI L'ETAT DE DECONNEXION " + deconnexion )
+        if deconnexion == 'on':
+            messageDeconnexion = "Merci d'avoir connsulter l'application "
+            return render(request, 'src/loginSignup.html', {'messageDeconnexion': messageDeconnexion})
+    return render(request, 'template.html')
 
 

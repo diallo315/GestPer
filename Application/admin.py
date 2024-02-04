@@ -28,4 +28,8 @@ class SanctionAdmin(admin.ModelAdmin):
 @admin.register(Formation)
 class FormationAdmin(admin.ModelAdmin):
     list_display =['personnel', 'programmeFormation', 'dateDeb', 'dateFin']
+    
+@admin.register(HFormation)
+class HFormationAdmin(admin.ModelAdmin):
+    list_display =['formation','observation']
 

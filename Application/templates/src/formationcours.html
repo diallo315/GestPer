@@ -7,6 +7,50 @@
 
 
 {% block content %}
-    
+<div class="w3-container">
+    <h2 style="font-weight: bold; text-align:center; margin-top:20px">La Liste des Personnels en Cours de Formation</h2>
+    <div class="w3-third w3-right">  
+       <div> 
+        {% csrf_token %}
+       </div>
+        <div style="display: flex;"> 
+          <input class="inputPersonne" type="text" id="searchInput" placeholder="Rechercher...">
+          <select style="margin-left: 5px;" class="selectFilter" id="filterMatriculeSexe">
+              <option value="all">Tous</option>
+              <option value="matricule">Matricule</option>
+              <option value="formation">Formation</option>
+          </select>
+          <button style="margin-left: 5px;" class="buttonSearchPersonnel" onclick="filterTable()">Rechercher</button>
+      
+        </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <table class="tablePersonnel" id="myTable" style="margin: auto;">
+            <thead>
+                <tr>
+                    <th>Matricule</th>
+                    <th>Nom et Prénom</th>
+                    <th>Programme de la foramtion</th>
+                    <th>Date Début</th>
+                    <th>Date Fin</th>
+                    <th>Etat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for formation in formations %}
+                    <tr>
+                        <td> {{formation.personnel.matricule}} </td>
+                        <td> {{formation.personnel.nom}} {{formation.personnel.prenom}} </td>
+                        <td>{{formation.programmeFormation}}</td>
+                        <td>{{formation.dateDeb}}</td>
+                        <td> {{formation.dateFin}} </td>
+                        <td style="text-align:center;"><a style="padding-right:5px" href="#" class="fa fa-refresh fa-fw"></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock content %}
     
